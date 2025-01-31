@@ -251,9 +251,9 @@ def get_real_resolution():
 def get_screen_size():
     w = GetSystemMetrics(0)
     h = GetSystemMetrics(1)
-    if(SCREEN_HEIGHT != 0):
-        w = SCREEN_WIDTH
     if(SCREEN_WIDTH != 0):
+        w = SCREEN_WIDTH
+    if(SCREEN_HEIGHT != 0):
         h = SCREEN_HEIGHT
    
     return w, h
