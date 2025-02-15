@@ -1,57 +1,52 @@
+
 # maimai-windows-touch-panel
 
-记录 Windows 设备的触屏事件并模拟 maimai 分区触摸屏幕的脚本.
+A script to record touch events on Windows devices and simulate maimai partition touch screens.
 
-软件模拟分区触摸, 可用于 maimai 自制手台上.
+The software simulates partition touch, which can be used on custom maimai handheld devices.
 
-## 使用方法
+## Usage
 
-1. 请先将游戏配置文件中 `DummyTouchPanel` 的值改为 `0`
-2. Windows 设置 - 蓝牙和其他设备 - 触控 - 三指和四指的触摸手势 - 关闭
-3. 辅助功能 - 鼠标指针与触控 - 触控指示器 - 关闭
-4. 控制面板 - 硬件和声音 - 笔和触控 - 关闭"触摸回应"中的"触摸屏幕时显示直观回应"
-5. 控制面板 - 硬件和声音 - 笔和触控 - 关闭"触摸操作"中的"将长按用作右键单击"   
-6. 打开任意P图工具, 准备一个和显示屏幕大小相同的一张图片(例如:2160x3840), 将 `./image/color_exp_panel.png`
-   放置到该图片圆形触摸区域的位置, 编辑好的图片放到脚本 `image` 目录下取名 `image_monitor.png`.
-7. 编辑 `config.yaml` 配置文件, 修改 `exp_image_dict` 配置, 将各区块对应的 RGB 通道颜色值改为刚P的图的对应区块颜色值(
-   一般不用改默认就行)
-8. 如果电脑上没有 Python 环境, 请先去 [官网](https://www.python.org/) 下载安装
-9. 双击运行 `install.bat` 安装依赖
-10. 编辑 `config.yaml` 配置文件, 按文件内说明修改多个配置
-11. 下载一个 `VSPD` 虚拟串口工具, 将 `COM3` 和 `COM33` 建立转发
-12. 触摸屏连接到电脑, 先双击运行 `start.bat`(如果有两块屏幕就在要运行游戏的那块屏幕上执行),
-    脚本会在屏幕最前端生成一个透明窗口用于捕捉触摸动作(使用 `Win+Tab` 可选择其他窗口), 然后再运行游戏(
-    游戏必须使用窗口化模式运行),
-    脚本控制台输出 `已连接到游戏` 即可
-13. 进游戏调整判定A/B的延迟直到可用, 游玩时透明窗口必须始终位于最前端窗口.
-14. 打一把看看蹭不蹭星星/触控是否灵敏, 根据体验修改 `AREA_SCOPE` 变量
-15. 如果单点延迟低但滑动时延迟变高, 请将脚本中 `TOUCH_THREAD_SLEEP_MODE` 修改为 false,
-    或者可以调小 `TOUCH_THREAD_SLEEP_DELAY` 的值(如果还是卡请提 issue 反馈)
+1. First, change the value of `DummyTouchPanel` in the game configuration file to `0`.
+2. Windows Settings - Bluetooth and other devices - Touch - Three-finger and four-finger touch gestures - Turn off.
+3. Accessibility - Mouse pointer and touch - Touch indicator - Turn off.
+4. Control Panel - Hardware and Sound - Pen and Touch - Turn off "Show visual feedback when touching the screen" in "Touch feedback".
+5. Control Panel - Hardware and Sound - Pen and Touch - Turn off "Use touch to right-click" in "Touch actions".
+6. Open any image editing tool, prepare an image the same size as the display screen (e.g., 2160x3840), place `./image/color_exp_panel.png` in the circular touch area of the image, and save the edited image in the script's `image` directory as `image_monitor.png`.
+7. Edit the `config.yaml` configuration file, modify the `exp_image_dict` configuration, and change the RGB channel color values of each block to the corresponding block color values of the edited image (usually, the default values are fine).
+8. If there is no Python environment on your computer, please download and install it from the [official website](https://www.python.org/).
+9. Double-click `install.bat` to install dependencies.
+10. Edit the `config.yaml` configuration file and modify multiple configurations according to the instructions in the file.
+11. Download a `VSPD` virtual serial port tool and establish forwarding between `COM3` and `COM33`.
+12. Connect the touch screen to the computer, double-click `start.bat` (if there are two screens, execute it on the screen where the game will run). The script will generate a transparent window at the front of the screen to capture touch actions (use `Win+Tab` to select other windows), then run the game (the game must be run in windowed mode). The script console will output `Connected to the game` when ready.
+13. Adjust the delay of judgment A/B in the game until it is usable. The transparent window must always be the topmost window while playing.
+14. Play a game to see if the touch is responsive and adjust the `AREA_SCOPE` variable based on the experience.
+15. If the single-point delay is low but the delay increases during sliding, set `TOUCH_THREAD_SLEEP_MODE` in the script to false, or reduce the value of `TOUCH_THREAD_SLEEP_DELAY` (if it still lags, please submit an issue for feedback).
 
-## 命令列表
+## Command List
 
-游戏时如果不小心断开连接, 请在控制台输入 `start` 并回车来重新连接游戏
+If the connection is accidentally disconnected during the game, type `start` in the console and press Enter to reconnect to the game.
 
-输入 `reverse` 可调整触控设备屏幕方向
+Type `reverse` to adjust the screen orientation of the touch device.
 
-输入 `restart` 可重新读取配置文件/重启脚本
+Type `restart` to reload the configuration file/restart the script.
 
-## 注意
+## Note
 
-想要加 2P 的重新复制一下脚本并添加串口 COM4 到 COM44 的转发就好
+To add 2P, simply copy the script and add forwarding from COM4 to COM44.
 
-该脚本仅用于测试.
+This script is for testing purposes only.
 
-## 类似项目
+## Similar Projects
 
 [maimai-android-touch-panel](https://github.com/ERR0RPR0MPT/maimai-android-touch-panel)
 
-## 许可证
+## License
 
 [MIT License](https://github.com/ERR0RPR0MPT/maimai-windows-touch-panel?tab=MIT-1-ov-file)
 
-## 其他
+## Others
 
-编辑好的区块成品图类似这样:
+The edited block image looks like this:
 
 ![](https://raw.githubusercontent.com/ERR0RPR0MPT/maimai-android-touch-panel/main/image/image_monitor.png)
